@@ -1,0 +1,33 @@
+<h2>Box 01</h2>
+
+<ul class="pokemons">
+  <li *ngFor="let pokemon of pokemons">
+    <button [class.selected]="pokemon === selectedPokemon" type="button" (click)="onSelect(pokemon)">
+      <span class="pokedex">{{pokemon.level}}:</span>
+      <span class="name"> {{pokemon.name}} </span>
+      <img class="mini_image" src = {{pokemon.image}} />
+    </button>
+  </li>
+</ul>
+
+<div *ngIf="selectedPokemon">
+  <h2>{{selectedPokemon.name | uppercase}} Details</h2>
+
+  <div>Pokedex: {{selectedPokemon.id}}</div>
+  <span> {{selectedPokemon.name}} </span>
+
+  <span class="level">Level: {{selectedPokemon.level}} </span>
+  <div> 
+    <img src = {{selectedPokemon.image}} />
+  </div>
+
+  <div class="nickname-field">
+    <label for="name">Give a nickname to the pokemon!: </label>
+    <input id="name" [(ngModel)]="selectedPokemon.name" placeholder="selectedPokemon.name">
+  </div>
+
+  
+</div>
+
+
+
